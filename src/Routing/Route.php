@@ -88,6 +88,13 @@ class Route extends \Illuminate\Routing\Route
     protected $route;
 
     /**
+     * The controller method.
+     *
+     * @var string
+     */
+    protected $controllerMethod;
+
+    /**
      * Create a new route instance.
      *
      * @param \Dingo\Api\Contract\Routing\Adapter $adapter
@@ -282,7 +289,8 @@ class Route extends \Illuminate\Routing\Route
         [$this->controllerClass, $this->controllerMethod] = \explode('@', $this->action['uses']);
 
         $this->container->instance(
-            $this->controllerClass, $this->controller = $this->container->make($this->controllerClass)
+            $this->controllerClass,
+            $this->controller = $this->container->make($this->controllerClass)
         );
 
         return $this->controller;
