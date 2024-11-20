@@ -42,7 +42,7 @@ class ApplicationStub extends Container implements Application
         //
     }
 
-    public function storagePath()
+    public function storagePath($path = '')
     {
         //
     }
@@ -195,5 +195,30 @@ class ApplicationStub extends Container implements Application
     public function terminate()
     {
         //
+    }
+
+    public function terminating($callback = null)
+    {
+        return $this;
+    }
+
+    public function langPath($path = '')
+    {
+        return '';
+    }
+
+    public function publicPath($path = '')
+    {
+        return '';
+    }
+
+    public function hasDebugModeEnabled()
+    {
+        return true;
+    }
+
+    public function maintenanceMode()
+    {
+        return false;
     }
 }
