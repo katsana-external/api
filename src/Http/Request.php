@@ -36,8 +36,10 @@ class Request extends IlluminateRequest implements RequestInterface
             $old->cookies->all(), $old->files->all(), $old->server->all(), $old->content
         );
 
-        if ($session = $old->getSession()) {
-            $new->setLaravelSession($old->getSession());
+        if ($old->hasSession()) {
+            if ($session = $old->getSession()) {
+                $new->setLaravelSession($session);
+            }
         }
 
         $new->setRouteResolver($old->getRouteResolver());
